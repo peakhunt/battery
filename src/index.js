@@ -1,3 +1,7 @@
+const db_api = require('./db_api');
+
+db_api.pingDB();
+
 const webif_init = require('./webif');
 
 const { app, listener } = webif_init();
