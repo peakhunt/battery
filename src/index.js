@@ -1,35 +1,20 @@
-const MongoClient = require('mongodb').MongoClient;
-const logger = require('./logger');
+const db_api = require('./db_api');
+const web_if = require('./webif');
 
-async function main() {
-  const url = 'mongodb://localhost:27017/bms';
-  const dbName = 'bms';
-  const client = new MongoClient(url);
-  let db = null; 
-
-  logger.info(`trying to connect to ${url}`);
-  try {
-    // Use connect method to connect to the Server
-    await client.connect();
-
-    logger.info(`connected to db ${url}`);
-
-    db = client.db(dbName);
-  } catch (err) {
+function main() {
+  return new Promise((resolve, reject) => {
     /* istanbul ignore next: */
-    logger.error(err);
-  }
-  // client.close();
-
-  /* eslint-disable global-require */
-  const db_api = require('./db_api')(db);
-  const { app, listener } = require('./webif')();
-  /* eslint-enable global-require */
-
-  db_api.pingDB();
-
-  logger.info('exprting...');
-  return { server: app, listener };
+    db_api.init().then(() => {
+      /* istanbul ignore next: */
+      db_api.pingDB(); /* just test */
+      const { app, listener } = web_if();
+      return resolve({ server: app, listener });
+    }, (err) => {
+      /* istanbul ignore next: */
+      process.exit(-1);
+      return reject(err);
+    });
+  });
 }
 
 

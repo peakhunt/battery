@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/peakhunt/vue_node_project#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "concurrently": "^4.1.0",
@@ -45,7 +43,6 @@
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.23.0",
     "mongodb": "^3.1.13",
-    "mongojs": "^2.6.0",
     "vue-apexcharts": "^1.2.8",
     "winston": "^3.1.0",
     "write-file-atomic": "^2.3.0"
