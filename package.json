@@ -1,0 +1,52 @@
+{
+  "name": "vue_node_project",
+  "version": "0.1.0",
+  "description": "vue node project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "NODE_ENV=dev node src/index.js",
+    "build": "npm run lint && babel ./src -d ./build",
+    "lint": "eslint ./src",
+    "test": "nyc mocha --recursive --require babel-core/register --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peakhunt/vue_node_project.git"
+  },
+  "author": "Hawk Hyouck Bokdol Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peakhunt/vue_node_project/issues"
+  },
+  "homepage": "https://github.com/peakhunt/vue_node_project#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "concurrently": "^4.1.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "dependencies": {
+    "apexcharts": "^3.2.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "moment": "^2.23.0",
+    "vue-apexcharts": "^1.2.8",
+    "winston": "^3.1.0",
+    "write-file-atomic": "^2.3.0"
+  }
+}
