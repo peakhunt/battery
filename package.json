@@ -6,9 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "NODE_ENV=dev node src/index.js",
-    "build": "npm run lint && babel ./src -d ./build",
     "lint": "eslint ./src",
-    "test": "nyc mocha --recursive --require babel-core/register --exit"
+    "test": "nyc mocha --recursive --exit"
   },
   "repository": {
     "type": "git",

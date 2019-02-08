@@ -3,16 +3,18 @@
 //
 process.env.NODE_ENV = 'dev';
 
-import * as assert from 'assert';
-import { RSA_NO_PADDING } from 'constants';
+const assert = require('assert');
+const { RSA_NO_PADDING } = require('constants');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
-const { server, listener } = require('../src');
+const serverPromise = require('../src');
 const config = require('../src/config');
 const config_update = require('../src/config_update');
+
+let server, listener;
 
 const should = chai.should();
 
@@ -158,7 +160,11 @@ describe('public api test', () => {
   beforeEach((done) => {
     // before each test we do something
     // nothing to do for now
-    done();
+    serverPromise.then((obj) => {
+      server = obj.server;
+      listener = obj.listener;
+      done();
+    });
   });
 
   describe('GET /api/public/hello', () => {
@@ -260,7 +266,11 @@ describe('private api test', () => {
   beforeEach((done) => {
     // before each test we do something
     // nothing to do for now
-    done();
+    serverPromise.then((obj) => {
+      server = obj.server;
+      listener = obj.listener;
+      done();
+    });
   });
 
   describe('GET /api/private', () => {

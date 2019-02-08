@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+const assert = require('assert');
 const moment = require('moment');
 const crypto = require('crypto');
 const user = require('../src/user');

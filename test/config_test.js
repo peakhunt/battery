@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+const assert = require('assert');
 const crypto = require('crypto');
 const config = require('../src/config');
 const config_update = require('../src/config_update');
